@@ -1,0 +1,55 @@
+# backend/src/main/resources/application.yml
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximumPoolSize: 20
+      minimumIdle: 10
+      connectionTimeout: 30000
+      validateTimeout: 5000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      connectionTestQuery: SELECT 1
+      keepaliveTime: 30000
+  h2:
+    console:
+      enabled: true
+  server:
+    port: 8080
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+      read-unknown-enum-values-as-null: true
+      accept-single-value-as-array: true
+    mapper:
+      accept-case-insensitive-enums: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.me.v1.mapper: debug
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  type-handlers-package: com.me.v1.handler
+  configuration:
+    default-enum-type-handler: org.apache.ibatis.type.EnumTypeHandler
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.me.v1.model

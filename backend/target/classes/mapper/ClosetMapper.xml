@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.v1.mapper.ClosetMapper">
+
+    <resultMap id="BaseResultMap" type="com.me.v1.model.ClothingItem">
+        <id     column="id"         property="id"         jdbcType="BIGINT"/>
+        <result column="name"       property="name"       jdbcType="VARCHAR"/>
+        <result column="category"   property="category"   jdbcType="VARCHAR"/>
+        <result column="brand"      property="brand"      jdbcType="VARCHAR"/>
+        <result column="color"      property="color"      jdbcType="VARCHAR"/>
+        <result column="season"     property="season"
+                javaType="java.util.List"
+                jdbcType="VARCHAR"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="image_url"  property="imageUrl"   jdbcType="VARCHAR"/>
+        <result column="purchase_date" property="purchaseDate" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+</mapper>
