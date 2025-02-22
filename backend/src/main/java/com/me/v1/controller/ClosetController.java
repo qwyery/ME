@@ -30,7 +30,7 @@ public class ClosetController {
     @Autowired
     private OutfitRecommendationService outfitRecommendationService;
 
-    @PostMapping("/closet")
+    @PostMapping
     public ResponseEntity<String> createClothingItem(@RequestBody ClothingItem item) {
         try {
             closetService.addClothingItem(item);
